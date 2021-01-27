@@ -16,8 +16,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RegistrationComponent } from './registration/registration.component';
 import { HomeComponent } from './home/home.component';
+
+
+import {MatCheckboxModule} from '@angular/material/checkbox'; 
+import {MatToolbarModule} from '@angular/material/toolbar'; 
+import { NavbarComponent } from './navbar/navbar.component';
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegistrationComponent, HomeComponent],
+  declarations: [AppComponent, LoginComponent, RegistrationComponent, HomeComponent, NavbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,9 +33,11 @@ import { HomeComponent } from './home/home.component';
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
+    MatToolbarModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

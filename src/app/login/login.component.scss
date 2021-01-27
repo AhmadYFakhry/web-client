@@ -1,5 +1,40 @@
 .login-form {
-  margin: auto;
-  width: 24%;
-  height: 50vh;
+  // margin: auto;
+  margin: -25vh 50px;
+  max-width: 50vw;
+  padding-right:  10vw;
+  height: 100vh;
+  background-color: gery
+}
+
+.half-width {
+  width: 15vw
+}
+
+.frgt-pass {
+  text-decoration: none;
+  color: #000;
+}
+
+.login-subtitle {
+  font-weight: 300;
+}
+
+
+.login-title {
+  font-weight: 500;
+}
+
+.btn {
+  border-radius: 0px;
+  padding: 0px 30px;
+  background-color: --tlg-grey;
+}
+
+.btn:hover {
+    background-color: --tlg-yellow;
+}
+
+a:hover {
+  color: --tlg-yellow;
 }
