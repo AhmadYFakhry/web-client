@@ -1,14 +1,16 @@
+@import '../utils/variables.scss';
+
 .login-form {
   // margin: auto;
   margin: -25vh 50px;
-  max-width: 50vw;
+  width: 50vw;
   padding-right:  10vw;
   height: 100vh;
   background-color: gery
 }
 
 .half-width {
-  width: 15vw
+  width: 20vw;
 }
 
 .frgt-pass {
@@ -28,13 +30,17 @@
 .btn {
   border-radius: 0px;
   padding: 0px 30px;
-  background-color: --tlg-grey;
+  background-color: $tlg-grey;
 }
 
 .btn:hover {
-    background-color: --tlg-yellow;
+    background-color: $tlg-yellow;
 }
 
 a:hover {
-  color: --tlg-yellow;
+  color: $tlg-yellow;
+}
+
+.loginInput {
+  caret-color: $tlg-yellow;
 }

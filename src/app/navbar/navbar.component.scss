@@ -1,9 +1,11 @@
+@import '../utils/variables.scss';
+
 .navbar-logo {
     // color: --tlg-yellow;
-    background-color: #F6CC50;
-    padding: 1.0em;
+    background-color: $tlg-yellow;
+    padding: 0.8em;
 }
 
 .test-toolbar {
-    background-color: #333532;
+    background-color: $tlg-grey;
 }

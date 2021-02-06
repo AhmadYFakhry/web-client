@@ -3,6 +3,6 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 :root{
-    --tlg-yellow: #F6CC50;
-    --tlg-grey: #333532;
+    $tlg-yellow: #F6CC50;
+    $tlg-grey: #333532;
 }
