@@ -6,33 +6,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TLG | Login</title>
 </head>
-<body>
-  <div
-    class="registration-form"
-    fxLayout="column"
-    fxLayoutAlign="center"
-    fxLayoutGap="10px"
-  >
-    <h1 class="login-title">We are Fixing the Student Housing Market</h1>
-    <h2 class="login-subtitle">Create your account</h2>
-    <mat-form-field class="half-width">
-      <input class="loginInput" matInput placeholder="Name" type="name" />
-    </mat-form-field>
-    <mat-form-field class="half-width">
-      <input class="loginInput" matInput placeholder="Address" type="address" />
-    </mat-form-field>
-    <mat-form-field class="half-width">
-      <input class="loginInput" matInput placeholder="Email" type="email" />
-    </mat-form-field>
-    <mat-form-field class="half-width">
-      <input class="loginInput" matInput placeholder="Password" type="password" />
-    </mat-form-field>
-    <mat-form-field class="half-width">
-      <input class="loginInput" matInput placeholder="Type of User" type="name" />
-    </mat-form-field>
-    <button class="btn btn-register" mat-raised-button color="primary">
-        Submit
-    </button>
+<body class="registration-form-back">
+
+  <!-- <form action=""></form> -->
+  <div class="registration-form-back"
+      fxLayout="column"
+      fxLayoutAlign="space-evenly center">
+    <div
+      class="registration-form"
+      fxLayout="column"
+    >
+      <h1 class="login-title">We are Fixing the Student Housing Market</h1>
+      <h2 class="login-subtitle">Create your account</h2>
+      <mat-form-field appearance="outline" class="half-width">
+        <input class="loginInput" matInput placeholder="Name" type="name" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="half-width">
+        <input class="loginInput" matInput placeholder="Email" type="email" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="half-width">
+        <input class="loginInput" matInput placeholder="Password" type="password" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Type of User</mat-label>
+        <mat-select>
+          <mat-option value="one">Student</mat-option>
+          <mat-option value="two">Landlord</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button class="btn btn-login" (click)="test()" type="submit" (submit)="test()" mat-raised-button color="primary">
+        Create Your Account
+      </button>
+    </div>
+    <div fxlayout="row" fxLayoutAlign="start" fxLayoutGap="1vw">
+    </div>
   </div>
 </body>
 </html>

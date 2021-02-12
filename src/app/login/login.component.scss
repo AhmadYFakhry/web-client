@@ -1,12 +1,15 @@
 @import '../utils/variables.scss';
 
 .login-form {
-  // margin: auto;
-  margin: -25vh 50px;
-  width: 50vw;
-  padding-right:  10vw;
-  height: 100vh;
-  background-color: gery
+    // background-color: white;
+  width: 40%;
+  padding: 100px 70px;
+  border-radius: 20px;
+  // box-shadow: 10px 10px 8px #888888;
+}
+
+.login-inner {
+  width: 80%;
 }
 
 .half-width {
@@ -23,24 +26,37 @@
 }
 
 
+.buttons {
+  padding: 10px 0px;
+}
+
 .login-title {
   font-weight: 500;
 }
 
 .btn {
-  border-radius: 0px;
-  padding: 0px 30px;
+  border-radius: 8px;
+  // padding: 0px 10px;
+  width: 125px;
+  // margin: 5px;
+  padding: 4px;
   background-color: $tlg-grey;
 }
 
 .btn:hover {
-    background-color: $tlg-yellow;
+  // border-radius: 15px;
+  background-color: $tlg-yellow;
 }
 
 a:hover {
   color: $tlg-yellow;
 }
 
-.loginInput {
-  caret-color: $tlg-yellow;
+.loginInput:active {
+  // caret-color: $tlg-yellow;
+  border-color: black
+}
+
+.mat-form-field-appearance-outline .mat-focused .mat-form-field-outline-thick {
+  color: #000 !important;
 }

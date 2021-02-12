@@ -6,6 +6,30 @@
     padding: 0.8em;
 }
 
-.test-toolbar {
+.test-navbar {
     background-color: $tlg-grey;
+    position: fixed;
+    margin-bottom: 100px;
+}
+
+.test-navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;   
+}
+
+.test-navbar li {
+    padding: 20px;
+    float: left;
+}
+
+.test-navbar li a {
+    color: $tlg-cream;
+    text-decoration: none;
+}
+
+.test-navbar li a:hover {
+    color: $tlg-cream;
+    text-decoration: underline;
 }
