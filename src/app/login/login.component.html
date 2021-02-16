@@ -16,28 +16,34 @@
       <div class="login-titles">
           <h1 class="login-title">We are Fixing the Student Housing Market</h1>
           <h2 class="login-subtitle">Login to access your account</h2>
-        </div>
+      </div>
+      <div>
         <mat-form-field appearance="outline"class="half-width">
           <input class="loginInput" matInput placeholder="Email" type="email" />
         </mat-form-field>
+      </div>
+      <div>
         <mat-form-field appearance="outline"class="half-width loginInput">
           <input class="loginInput" matInput placeholder="Password" type="password" />
         </mat-form-field>
-        <div fxlayout="row" fxLayoutAlign="space-between" fxLayoutGap="6vw">
-          <mat-checkbox class="example-margin">Remember Me</mat-checkbox>
-          <a class="frgt-pass" routerLink="/register">
-            Forgot Password?
-          </a>
-        </div>
-        <div class="buttons" fxlayout="column" fxLayoutAlign="start" fxLayoutGap="1vw">
-          <button class="btn btn-login"(submit)="onSubmit()" mat-raised-button color="primary">
-            Login
-          </button>
-          <a routerLink="/register">
-            <button class="btn btn-reg" mat-raised-button color="primary">Sign up</button>
-          </a>
-        </div>
+      </div>
+      <div fxlayout="row" fxLayoutAlign="space-between" fxLayoutGap="6vw">
+        <mat-checkbox class="example-margin">Remember Me</mat-checkbox>
+        <a class="frgt-pass" routerLink="/register">
+          Forgot Password?
+        </a>
+      </div>
+      <div class="buttons" fxlayout="column" fxLayoutAlign="start" fxLayoutGap="1vw">
+        <button class="btn btn-login"(click)="onSubmit()" mat-raised-button color="primary">
+          Login
+        </button>
+        <a routerLink="/register">
+          <button class="btn btn-reg" mat-raised-button color="primary">Sign up</button>
+        </a>
+      </div>
+      <div>
         <p>By signing up, you are agreeing to The Lease Genius's <strong>Terms and Conditions & Privacy Policy</strong></p>
+      </div>
       </div>
     </div>
 </body>

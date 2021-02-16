@@ -1,19 +1,20 @@
 @import '../utils/variables.scss';
 
-.login-form {
-    // background-color: white;
-  width: 40%;
-  padding: 100px 70px;
-  border-radius: 20px;
-  // box-shadow: 10px 10px 8px #888888;
+body {
+  background-color: black;
+  background-image: url('https://images.pexels.com/photos/3845512/pexels-photo-3845512.jpeg?cs=srgb&dl=pexels-kelly-lacy-3845512.jpg&fm=jpg')
 }
 
 .login-inner {
-  width: 80%;
+  background-color: white;
+  margin: 200px 50px;
+  padding: 100px 70px;
+  max-width: 45%;
+  box-shadow: 10px 2px 15px #141414
 }
 
 .half-width {
-  width: 20vw;
+  width: 30vw;
 }
 
 .frgt-pass {

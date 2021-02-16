@@ -20,9 +20,13 @@ export class RegistrationComponent implements OnInit {
   test(): void {
     // console.log("TEST");
     try {
-      axios.post("https://testing-environment-300301.firebaseapp.com/newuser", {
+      axios.post('https://testing-environment-300301.firebaseapp.com/newuser', {
         email: this.email, password: this.password
-      });
+      }).then(e => {
+        console.log(e);
+      }).catch(e => {
+        console.log(e);
+      })
     } catch (error) {
       console.log(error);
     }
