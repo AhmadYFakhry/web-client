@@ -11,6 +11,8 @@ export class RegistrationComponent implements OnInit {
   // username = '';
   password = '';
   email = '';
+  name = '';
+  type = '';
   constructor() { }
 
   ngOnInit(): void {
@@ -21,7 +23,7 @@ export class RegistrationComponent implements OnInit {
     // console.log("TEST");
     try {
       axios.post('https://testing-environment-300301.firebaseapp.com/newuser', {
-        email: this.email, password: this.password
+        email: this.email, password: this.password, name: this.name, type: this.type
       }).then(e => {
         console.log(e);
       }).catch(e => {
