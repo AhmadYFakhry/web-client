@@ -12,10 +12,14 @@ export class LoginComponent {
   email = '';
   constructor() {}
 
-  onSubmit() {
-    console.log(this.email, this.password)
-    axios.post('https://testing-environment-300301.firebaseapp.com/signin', {
+  async onSubmit() {
+  try {
+    const res = await axios.post('https://testing-environment-300301.firebaseapp.com/signin', {
       email: this.email, password: this.password
     })
+    console.log(res)
+  } catch (error) {
+    console.error(error)
+  }
   }
 }

@@ -19,21 +19,19 @@
       <h1 class="login-title">We are Fixing the Student Housing Market</h1>
       <h2 class="login-subtitle">Create your account</h2>
       <mat-form-field appearance="outline" class="half-width">
-        <input class="loginInput" matInput placeholder="Name" type="name" />
+        <input (input)="name=$event.target.value" class="loginInput" matInput placeholder="Name" type="name" />
       </mat-form-field>
       <mat-form-field appearance="outline" class="half-width">
-        <input class="loginInput" matInput placeholder="Email" type="email" />
+        <input (input)="email=$event.target.value" class="loginInput" matInput placeholder="Email" type="email" />
       </mat-form-field>
       <mat-form-field appearance="outline" class="half-width">
-        <input class="loginInput" matInput placeholder="Password" type="password" />
+        <input (input)="password=$event.target.value" class="loginInput" matInput placeholder="Password" type="password" />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Type of User</mat-label>
-        <mat-select>
-          <mat-option value="one">Student</mat-option>
-          <mat-option value="two">Landlord</mat-option>
-          <mat-option value="one">Student</mat-option>
-          <mat-option value="two">Landlord</mat-option>
+        <mat-select [(value)]="type" >
+          <mat-option value="Student">Student</mat-option>
+          <mat-option value="Landlord">Landlord</mat-option>
         </mat-select>
       </mat-form-field>
       <button class="btn btn-login" (click)="test()" type="submit" (submit)="test()" mat-raised-button color="primary">

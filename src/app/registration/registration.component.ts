@@ -8,7 +8,6 @@ import axios from 'axios';
 })
 export class RegistrationComponent implements OnInit {
 
-  // username = '';
   password = '';
   email = '';
   name = '';
@@ -16,19 +15,17 @@ export class RegistrationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log("TEST");
+    // console.log("TEST");
   }
 
-  test(): void {
+  async test(): Promise<void> {
     // console.log("TEST");
+    console.log(this.password, this.email, this.name, this.type);
     try {
-      axios.post('https://testing-environment-300301.firebaseapp.com/newuser', {
+      const res = await axios.post('https://testing-environment-300301.firebaseapp.com/newuser', {
         email: this.email, password: this.password, name: this.name, type: this.type
-      }).then(e => {
-        console.log(e);
-      }).catch(e => {
-        console.log(e);
       })
+      console.log(res);
     } catch (error) {
       console.log(error);
     }
