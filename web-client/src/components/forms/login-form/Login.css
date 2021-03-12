@@ -1,0 +1,10 @@
+.test {
+    background-image: url("https://images.pexels.com/photos/1642125/pexels-photo-1642125.jpeg?cs=srgb&dl=pexels-the-lazy-artist-gallery-1642125.jpg&fm=jpg");
+    background-repeat: 'no-repeat';
+    height: 94vh;
+    padding-top: 0.5ch;
+}
+
+.login-btn {
+    background-color: #F6CC50 !important;
+}
