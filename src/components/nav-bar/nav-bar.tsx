@@ -1,6 +1,6 @@
 import React from 'react';
 // import './App.css';
-import { Flex, Spacer, Text, Heading, Button, Center } from '@chakra-ui/react';
+import { Flex, Spacer, Center } from '@chakra-ui/react';
 import { Image, Link } from '@chakra-ui/react';
 import './nav-bar.css';
 const Navbar = () => {
