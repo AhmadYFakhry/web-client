@@ -4,6 +4,8 @@ import './index.css';
 import App from './components/App/App';
 import reportWebVitals from './utility/reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react';
+require('dotenv').config();
+
 ReactDOM.render(
   <ChakraProvider>
     <App />

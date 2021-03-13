@@ -1,7 +1,10 @@
 .test {
     background-image: url("https://images.pexels.com/photos/1642125/pexels-photo-1642125.jpeg?cs=srgb&dl=pexels-the-lazy-artist-gallery-1642125.jpg&fm=jpg");
+    background-size: cover;
     background-repeat: 'no-repeat';
-    height: 94vh;
+    height: 100vh;
+    background-position: center center;
+    background-attachment: fixed;
     padding-top: 0.5ch;
 }
 

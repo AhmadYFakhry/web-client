@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './Login.css';
+import React from 'react';
+import './Registration.css';
 import {
   Heading,
   Container,
@@ -9,25 +9,33 @@ import {
   Button,
   Text,
   useToast,
+  Flex,
+  Spacer,
+  Select,
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-interface LoginFormInput {
+interface RegistrationFormInput {
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
+  type: string;
 }
 
 const backendURL = 'https://testing-environment-300301.firebaseapp.com/';
 
-const Login = () => {
-  const { register, handleSubmit } = useForm<LoginFormInput>();
+const Register = () => {
+  const { register, handleSubmit } = useForm<RegistrationFormInput>();
   const toast = useToast();
   const toastIdRef: any = React.useRef();
 
-  const onSubmit = async (data: LoginFormInput) => {
+  const onSubmit = async (data: RegistrationFormInput) => {
+    const newUser = { ...data, name: `${data.firstName}, ${data.lastName}` };
     try {
       await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL || backendURL}/signin`
+        `${process.env.REACT_APP_BACKEND_URL || backendURL}/newuser`,
+        newUser
       );
       successToast();
     } catch (error) {
@@ -37,7 +45,7 @@ const Login = () => {
 
   const successToast = () => {
     toastIdRef.current = toast({
-      title: 'Logged In.',
+      title: 'Ypi',
       description: "You'll be redirected momentarily",
       status: 'success',
       duration: 9000,
@@ -56,7 +64,13 @@ const Login = () => {
   };
 
   return (
-    <div className='test'>
+    <div className='reg-main'>
+      <video autoPlay loop muted id='video'>
+        <source
+          src='https://www.pexels.com/video/3150402/download/?search_query=houses&tracking_id=er4ow2udilv'
+          type='video/mp4'
+        />
+      </video>
       <Container
         fontSize={['sm', 'md', 'lg', 'xl']}
         borderRadius='15px'
@@ -68,7 +82,25 @@ const Login = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack fontSize={['sm', 'md', 'lg', 'xl']} spacing='3'>
             <Heading>We're Fixing the Student Housing Market</Heading>
-            <Text fontSize='30px'>Login to access your account</Text>
+            <Text fontSize='30px'>Create Your Account</Text>
+            <Flex className='name-row'>
+              <Input
+                mr='2ch'
+                ref={register}
+                variant='filled'
+                type='name'
+                name='firstName'
+                placeholder='First Name'
+              />
+              <Spacer />
+              <Input
+                ref={register}
+                variant='filled'
+                type='name'
+                name='lastName'
+                placeholder='Last Name'
+              />
+            </Flex>
             <Input
               ref={register}
               variant='filled'
@@ -83,11 +115,14 @@ const Login = () => {
               name='password'
               placeholder='Password'
             />
+            <Select variant='filled' placeholder='Select option'>
+              <option value='option1'>Tenant</option>
+              <option value='option2'>Landlord</option>
+            </Select>
             <Box py='3'>
               <Button type='submit' className='login-btn' mr='3'>
-                Submit
+                Register
               </Button>
-              <Button className='login-btn'>Register</Button>
             </Box>
           </Stack>
         </form>
@@ -96,4 +131,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
