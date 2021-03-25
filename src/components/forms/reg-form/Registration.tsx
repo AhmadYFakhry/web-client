@@ -1,34 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import './Registration.css';
-import {
-  Heading,
-  Container,
-  Box,
-  Stack,
-  Input,
-  Button,
-  Text,
-  useToast,
-  Flex,
-  Spacer,
-  Select,
-} from '@chakra-ui/react';
-import { useForm } from 'react-hook-form';
+import { useToast } from '@chakra-ui/react';
 import axios from 'axios';
 import { Step, Steps } from 'react-step-builder';
-import { EmailStep, PassStep, NameStep } from './reg-steps/index';
-interface RegistrationFormInput {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  type: string;
-}
+import { EmailStep, PassStep, NameStep, UniStep } from './reg-steps/index';
 
 const backendURL = 'https://testing-environment-300301.firebaseapp.com/';
 
 const Register = () => {
   // const { register, handleSubmit } = useForm<RegistrationFormInput>();
+  const [university, setUniversity] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -49,8 +30,8 @@ const Register = () => {
 
   const successToast = () => {
     toastIdRef.current = toast({
-      title: 'Ypi',
-      description: "You'll be redirected momentarily",
+      title: "You're all good!",
+      description: "You'll be redirected momentarily...",
       status: 'success',
       duration: 9000,
       isClosable: true,
@@ -71,26 +52,27 @@ const Register = () => {
     console.log(firstName, lastName);
   }, [firstName, lastName]);
 
-  // const test = () => {
-  //   console.log(data);
-  // };
-
   return (
     <Steps>
       <Step
         title='My First Step'
+        component={UniStep}
+        setFirstName={setUniversity}
+        setUniversity={setUniversity}
+      />
+      <Step
+        title='My Second Step'
         component={NameStep}
         setFirstName={setFirstName}
         setLastName={setLastName}
       />
-      <Step title='My First Step' component={EmailStep} setEmail={setEmail} />
       <Step
+        title='My Third Step'
         firstname={firstName}
-        component={PassStep}
-        setPassword={setPassword}
+        component={EmailStep}
+        setEmail={setEmail}
       />
-      {/* <Step title='My Second Step' component={PassStep} /> */}
-      {/* <Step title='My Second Step' component={PassStep} /> */}
+      <Step component={PassStep} setPassword={setPassword} submit={onSubmit} />
     </Steps>
   );
 };

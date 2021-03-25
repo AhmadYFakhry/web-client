@@ -12,25 +12,13 @@ import {
 } from '@chakra-ui/react';
 import { Tooltip } from '@chakra-ui/react';
 import { CloseButton } from '@chakra-ui/react';
-const PassStep = (props: any) => {
-  const { setPassword, submit, next, prev, dataRef } = props;
+const UniStep = (props: any) => {
+  const { setUniversity, next, prev, keyPress } = props;
 
-  const test = () => {};
-
-  const onPressEnter = useCallback(
-    (event) => {
-      // console.log(event);
-      if (event.key === 'Enter') next();
-    },
-    [next]
-  );
-
-  const setUserPass = useCallback(
-    (event) => {
-      setPassword(event.target.value);
-    },
-    [setPassword]
-  );
+  const onPressEnter = useCallback((event) => {
+    // console.log(event);
+    if (event.key === 'Enter') next();
+  }, []);
 
   return (
     <div>
@@ -45,21 +33,23 @@ const PassStep = (props: any) => {
         my={['35vh']}
       >
         <Stack>
-          <Heading>Always use protection. Enter a password </Heading>
+          <Heading>
+            Hey! Let's get started. What university do you attend?
+          </Heading>
           <Flex>
             <Input
-              type='password'
-              name='password'
-              placeholder='Password'
-              onChange={setUserPass}
+              type='name'
+              name='university'
+              placeholder='University'
+              onChange={setUniversity}
               onKeyPress={onPressEnter}
             />
           </Flex>
           <Button onClick={next}>Next</Button>
-          <Button onClick={prev}>Previous</Button>
+          {/* <Button onClick={prev}>Previous</Button> */}
         </Stack>
       </Container>
     </div>
   );
 };
-export default PassStep;
+export default UniStep;

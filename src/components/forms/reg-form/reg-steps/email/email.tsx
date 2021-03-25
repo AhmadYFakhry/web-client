@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {
   Heading,
   Container,
@@ -13,7 +13,20 @@ import {
 import { Tooltip } from '@chakra-ui/react';
 import { CloseButton } from '@chakra-ui/react';
 const EmailStep = (props: any) => {
-  const { data, firstname, handleChange, next, prev, dataRef } = props;
+  const { firstname, setEmail, next, prev } = props;
+
+  const onPressEnter = useCallback((event) => {
+    // console.log(event);
+    if (event.key === 'Enter') next();
+  }, []);
+
+  const setUserEmail = useCallback(
+    (event) => {
+      setEmail(event.target.value);
+    },
+    [setEmail]
+  );
+
   return (
     <div>
       <Tooltip label='Cancel Registration and go home'>
@@ -27,13 +40,14 @@ const EmailStep = (props: any) => {
         my={['35vh']}
       >
         <Stack>
-          <Heading>Almost done! What's your email?</Heading>
+          <Heading>Alright {firstname}, what's your email?</Heading>
           <Flex>
             <Input
               type='email'
               name='name'
               placeholder='Your Email'
-              ref={dataRef}
+              onChange={setUserEmail}
+              onKeyPress={onPressEnter}
             />
           </Flex>
           <Button onClick={next}>Next</Button>
