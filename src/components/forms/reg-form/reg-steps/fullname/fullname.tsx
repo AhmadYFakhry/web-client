@@ -13,11 +13,7 @@ import {
 import { Tooltip } from '@chakra-ui/react';
 import { CloseButton } from '@chakra-ui/react';
 const NameStep = (props: any) => {
-  const { next, setFirstName, prev, setLastName, keyPress } = props;
-
-  const test = (data: any) => {
-    console.log(data);
-  };
+  const { next, setFirstName, prev, setLastName } = props;
 
   const setFirst = useCallback(
     (event) => {
@@ -33,10 +29,13 @@ const NameStep = (props: any) => {
     [setLastName]
   );
 
-  const onPressEnter = useCallback((event) => {
-    // console.log(event);
-    if (event.key === 'Enter') next();
-  }, []);
+  const onPressEnter = useCallback(
+    (event) => {
+      // console.log(event);
+      if (event.key === 'Enter') next();
+    },
+    [next]
+  );
 
   return (
     <div>
@@ -59,6 +58,7 @@ const NameStep = (props: any) => {
               name='name'
               placeholder='First Name'
               onChange={setFirst}
+              autoFocus
             />
             <Input
               type='text'
@@ -68,7 +68,9 @@ const NameStep = (props: any) => {
               onKeyPress={onPressEnter}
             />
           </Flex>
-          <Button onClick={next}>Next</Button>
+          <Button disabled onClick={next}>
+            Next
+          </Button>
           <Button onClick={prev}>Previous</Button>
         </Stack>
       </Container>

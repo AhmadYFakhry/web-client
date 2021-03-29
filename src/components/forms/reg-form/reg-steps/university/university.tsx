@@ -43,6 +43,7 @@ const UniStep = (props: any) => {
               placeholder='University'
               onChange={setUniversity}
               onKeyPress={onPressEnter}
+              autoFocus
             />
           </Flex>
           <Button onClick={next}>Next</Button>

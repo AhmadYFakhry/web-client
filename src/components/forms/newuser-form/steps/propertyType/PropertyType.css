@@ -1,0 +1,17 @@
+.center-images img {
+    width: 150px;
+}
+
+.center-images {
+    width: 800px;
+}
+
+.center-images button {
+    height: auto;
+    padding: 15px;
+    margin: 15px;
+}
+.button-stack {
+    margin: 20px;
+    width: 600px;
+}

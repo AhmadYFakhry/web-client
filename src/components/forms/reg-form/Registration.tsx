@@ -4,7 +4,7 @@ import { useToast } from '@chakra-ui/react';
 import axios from 'axios';
 import { Step, Steps } from 'react-step-builder';
 import { EmailStep, PassStep, NameStep, UniStep } from './reg-steps/index';
-
+import NewUserForm from '../newuser-form/newuser-form';
 const backendURL = 'https://testing-environment-300301.firebaseapp.com/';
 
 const Register = () => {
@@ -73,6 +73,7 @@ const Register = () => {
         setEmail={setEmail}
       />
       <Step component={PassStep} setPassword={setPassword} submit={onSubmit} />
+      <Step component={NewUserForm}></Step>
     </Steps>
   );
 };

@@ -13,9 +13,9 @@ import {
 import { Tooltip } from '@chakra-ui/react';
 import { CloseButton } from '@chakra-ui/react';
 const PassStep = (props: any) => {
-  const { setPassword, submit, next, prev, dataRef } = props;
+  const { setPassword, submit, next, prev } = props;
 
-  const test = () => {};
+  // const test = () => {};
 
   const onPressEnter = useCallback(
     (event) => {
@@ -53,6 +53,7 @@ const PassStep = (props: any) => {
               placeholder='Password'
               onChange={setUserPass}
               onKeyPress={onPressEnter}
+              autoFocus
             />
           </Flex>
           <Button onClick={next}>Next</Button>

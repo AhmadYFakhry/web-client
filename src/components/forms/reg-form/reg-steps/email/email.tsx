@@ -48,6 +48,7 @@ const EmailStep = (props: any) => {
               placeholder='Your Email'
               onChange={setUserEmail}
               onKeyPress={onPressEnter}
+              autoFocus
             />
           </Flex>
           <Button onClick={next}>Next</Button>
