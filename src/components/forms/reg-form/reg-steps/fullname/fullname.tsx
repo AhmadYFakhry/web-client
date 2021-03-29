@@ -1,22 +1,24 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
   Heading,
   Container,
-  Box,
   Stack,
   Input,
   Button,
-  Text,
-  // useToast,
   Flex,
 } from '@chakra-ui/react';
 import { Tooltip } from '@chakra-ui/react';
 import { CloseButton } from '@chakra-ui/react';
 const NameStep = (props: any) => {
-  const { next, setFirstName, prev, setLastName } = props;
+  const { next, setFirstName, firstName, lastName, prev, setLastName } = props;
+
+  const checkValid = () => {
+    return firstName.length < 3 || lastName.length < 3;
+  };
 
   const setFirst = useCallback(
     (event) => {
+      // checkValid();
       setFirstName(event.target.value);
     },
     [setFirstName]
@@ -24,6 +26,7 @@ const NameStep = (props: any) => {
 
   const setLast = useCallback(
     (event) => {
+      // checkValid();
       setLastName(event.target.value);
     },
     [setLastName]
@@ -59,6 +62,7 @@ const NameStep = (props: any) => {
               placeholder='First Name'
               onChange={setFirst}
               autoFocus
+              value={firstName}
             />
             <Input
               type='text'
@@ -66,9 +70,10 @@ const NameStep = (props: any) => {
               placeholder='Last Name'
               onChange={setLast}
               onKeyPress={onPressEnter}
+              value={lastName}
             />
           </Flex>
-          <Button disabled onClick={next}>
+          <Button disabled={checkValid()} onClick={next}>
             Next
           </Button>
           <Button onClick={prev}>Previous</Button>

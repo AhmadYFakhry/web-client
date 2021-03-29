@@ -1,17 +1,33 @@
 import React, { useCallback } from 'react';
-// import { useDropzone } from 'react-dropzone';
+import RadioCard from '../../../../radio-card/RadioCard';
 import './LandlordType.css';
 import {
   Container,
   Heading,
-  Image,
   Button,
-  Flex,
   Spacer,
   Stack,
+  useRadioGroup,
 } from '@chakra-ui/react';
 const LandlordType = (props: any) => {
-  const { setLandlordType, next } = props;
+  const options = ['Property Management Company', 'X', 'X'];
+  const { landlordType, setLandlordType, next, prev } = props;
+
+  const setLandlord = useCallback(
+    (event) => {
+      console.log(event);
+      setLandlordType(event);
+    },
+    [setLandlordType]
+  );
+
+  const { getRootProps, getRadioProps } = useRadioGroup({
+    name: 'PropType',
+    defaultValue: landlordType || 'Property Management Company',
+    onChange: setLandlord,
+  });
+
+  const group = getRootProps();
 
   return (
     <Container
@@ -23,14 +39,18 @@ const LandlordType = (props: any) => {
       centerContent
     >
       <Heading>What property type are you looking for?</Heading>
-      <Stack className='button-stack'>
-        <Button>Property Management Company</Button>
-        <Button>X</Button>
-        <Button>X</Button>
-        <Button>X</Button>
-        {/* </Stack> */}
-        <Spacer></Spacer>
+      <Stack {...group} className='button-stack'>
+        {options.map((value) => {
+          const radio = getRadioProps({ value });
+          return (
+            <RadioCard key={value} {...radio}>
+              {value}
+            </RadioCard>
+          );
+        })}
+        <Spacer />
         <Button onClick={next}>Next</Button>
+        <Button onClick={prev}>Previous</Button>
       </Stack>
     </Container>
   );

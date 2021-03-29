@@ -2,18 +2,20 @@ import React, { useCallback } from 'react';
 import {
   Heading,
   Container,
-  Box,
   Stack,
   Input,
   Button,
-  Text,
-  // useToast,
   Flex,
 } from '@chakra-ui/react';
 import { Tooltip } from '@chakra-ui/react';
 import { CloseButton } from '@chakra-ui/react';
 const EmailStep = (props: any) => {
-  const { firstname, setEmail, next, prev } = props;
+  const { firstname, setEmail, email, next, prev } = props;
+
+  const checkValid = () => {
+    const re = /(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/;
+    return re.test(email);
+  };
 
   const onPressEnter = useCallback((event) => {
     // console.log(event);
@@ -49,9 +51,12 @@ const EmailStep = (props: any) => {
               onChange={setUserEmail}
               onKeyPress={onPressEnter}
               autoFocus
+              value={email}
             />
           </Flex>
-          <Button onClick={next}>Next</Button>
+          <Button disabled={!checkValid()} onClick={next}>
+            Next
+          </Button>
           <Button onClick={prev}>Previous</Button>
         </Stack>
       </Container>

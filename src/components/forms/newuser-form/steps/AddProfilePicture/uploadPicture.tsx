@@ -3,10 +3,11 @@ import { useDropzone } from 'react-dropzone';
 import './UploadPicture.css';
 import { Container, Heading, Image, Button } from '@chakra-ui/react';
 const UploadProfilePicture = (props: any) => {
-  const { setPassword, submit, next, prev, dataRef } = props;
+  const { setProfilePicture, submitProfile, next, prev, dataRef } = props;
+
   const onDrop = useCallback((acceptedFiles) => {
     // Do something with the files
-    // console.log(acceptedFiles);
+    setProfilePicture(acceptedFiles);
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
@@ -37,7 +38,7 @@ const UploadProfilePicture = (props: any) => {
           // <p>Drag 'n drop your profile picture here, or click to browse</p>
         )}
       </Container>
-      <Button onClick={next}>Submit</Button>
+      <Button onClick={submitProfile}>Submit</Button>
     </Container>
   );
 };

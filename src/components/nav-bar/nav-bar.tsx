@@ -4,7 +4,6 @@ import { Flex, Spacer, Center } from '@chakra-ui/react';
 import { Image, Link } from '@chakra-ui/react';
 import './nav-bar.css';
 const Navbar = () => {
-  //   <div></div>;
   return (
     <Flex pos='fixed' w='100vw' h='84px'>
       <Center bg='#F6CC50' p='2'>
@@ -12,7 +11,6 @@ const Navbar = () => {
           w='50ch'
           src='https://i.ibb.co/2Yb2Dgp/Lease-Genius-Logo-4.png'
         ></Image>
-        {/* <Heading>The Lease Genius</Heading> */}
       </Center>
       <Spacer bg='#3F3F3F' />
       <Center bg='#3F3F3F' p='2'>

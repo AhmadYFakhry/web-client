@@ -1,22 +1,43 @@
 import React, { useCallback } from 'react';
-// import { useDropzone } from 'react-dropzone';
-import './PropertyType.css';
 import {
   Container,
   Heading,
-  Image,
   Button,
-  Flex,
-  Spacer,
-  Stack,
+  Text,
   Slider,
   SliderTrack,
   Box,
   SliderFilledTrack,
   SliderThumb,
+  Stack,
+  Flex,
+  Spacer,
 } from '@chakra-ui/react';
+import './Rooms.css';
+
 const Rooms = (props: any) => {
-  const { setPropertyType, next } = props;
+  const {
+    roomNumber,
+    bathroomNumber,
+    setRoomNumber,
+    setBathroomNumber,
+    next,
+    prev,
+  } = props;
+
+  const setBathroomNum = useCallback(
+    (number) => {
+      setBathroomNumber(number);
+    },
+    [setBathroomNumber]
+  );
+
+  const setRoomNum = useCallback(
+    (number) => {
+      setRoomNumber(number);
+    },
+    [setRoomNumber]
+  );
 
   return (
     <Container
@@ -28,21 +49,52 @@ const Rooms = (props: any) => {
       centerContent
     >
       <Heading>What property type are you looking for?</Heading>
-      <Stack>
-        <Slider defaultValue={1} min={1} max={5} step={1}>
-          <SliderTrack bg='yellow.100'>
+      <Stack className='stacks'>
+        <Flex>
+          <Text>{1}</Text>
+          <Spacer></Spacer>
+          <Text>Number of Rooms</Text>
+          <Spacer></Spacer>
+          <Text>{'5+'}</Text>
+        </Flex>
+        <Slider
+          onChangeEnd={setRoomNum}
+          defaultValue={roomNumber}
+          min={1}
+          max={5}
+          step={1}
+        >
+          <SliderTrack bg='red.100'>
             <Box position='relative' right={10} />
-            <SliderFilledTrack bg='yellow' />
+            <SliderFilledTrack bg='tomato' />
           </SliderTrack>
           <SliderThumb boxSize={6} />
         </Slider>
-        <Slider defaultValue={1} min={1} max={5} step={1}>
-          <SliderTrack bg='yellow.100'>
+
+        <Flex>
+          <Text>{1}</Text>
+          <Spacer></Spacer>
+          <Text>Number of Rooms</Text>
+          <Spacer></Spacer>
+          <Text>{'5+'}</Text>
+        </Flex>
+        <Slider
+          onChangeEnd={setBathroomNum}
+          defaultValue={bathroomNumber}
+          min={1}
+          max={5}
+          step={1}
+        >
+          <SliderTrack bg='red.100'>
             <Box position='relative' right={10} />
-            <SliderFilledTrack bg='yellow' />
+            <SliderFilledTrack bg='tomato' />
           </SliderTrack>
           <SliderThumb boxSize={6} />
         </Slider>
+        <Stack>
+          <Button onClick={next}>Next</Button>
+          <Button onClick={prev}>Previous</Button>
+        </Stack>
       </Stack>
     </Container>
   );

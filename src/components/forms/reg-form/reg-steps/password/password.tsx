@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
   Heading,
   Container,
@@ -13,9 +13,12 @@ import {
 import { Tooltip } from '@chakra-ui/react';
 import { CloseButton } from '@chakra-ui/react';
 const PassStep = (props: any) => {
-  const { setPassword, submit, next, prev } = props;
+  const { setPassword, submit, next, prev, password } = props;
 
-  // const test = () => {};
+  const checkValid = () => {
+    const re = /^[a-zA-Z0-9]{5,}$/;
+    return re.test(password);
+  };
 
   const onPressEnter = useCallback(
     (event) => {
@@ -54,9 +57,12 @@ const PassStep = (props: any) => {
               onChange={setUserPass}
               onKeyPress={onPressEnter}
               autoFocus
+              value={password}
             />
           </Flex>
-          <Button onClick={next}>Next</Button>
+          <Button disabled={!checkValid()} onClick={next}>
+            Next
+          </Button>
           <Button onClick={prev}>Previous</Button>
         </Stack>
       </Container>

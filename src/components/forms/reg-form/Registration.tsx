@@ -3,7 +3,13 @@ import './Registration.css';
 import { useToast } from '@chakra-ui/react';
 import axios from 'axios';
 import { Step, Steps } from 'react-step-builder';
-import { EmailStep, PassStep, NameStep, UniStep } from './reg-steps/index';
+import {
+  EmailStep,
+  PassStep,
+  NameStep,
+  UniStep,
+  Loading,
+} from './reg-steps/index';
 import NewUserForm from '../newuser-form/newuser-form';
 const backendURL = 'https://testing-environment-300301.firebaseapp.com/';
 
@@ -55,12 +61,16 @@ const Register = () => {
   return (
     <Steps>
       <Step
+        university={university}
         title='My First Step'
         component={UniStep}
-        setFirstName={setUniversity}
         setUniversity={setUniversity}
       />
       <Step
+        firstNameLen={firstName.length}
+        lastNameLen={lastName.length}
+        firstName={firstName}
+        lastName={lastName}
         title='My Second Step'
         component={NameStep}
         setFirstName={setFirstName}
@@ -69,11 +79,19 @@ const Register = () => {
       <Step
         title='My Third Step'
         firstname={firstName}
+        email={email}
         component={EmailStep}
         setEmail={setEmail}
       />
-      <Step component={PassStep} setPassword={setPassword} submit={onSubmit} />
-      <Step component={NewUserForm}></Step>
+      {/* Loading Step */}
+      <Step
+        password={password}
+        component={PassStep}
+        setPassword={setPassword}
+        submit={onSubmit}
+      />
+      <Step component={Loading} />
+      <Step firstName={firstName} component={NewUserForm}></Step>
     </Steps>
   );
 };
