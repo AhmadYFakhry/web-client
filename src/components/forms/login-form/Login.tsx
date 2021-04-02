@@ -11,13 +11,12 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
+import firebase from '../../../firebase';
+
 interface LoginFormInput {
   email: string;
   password: string;
 }
-
-const backendURL = 'https://testing-environment-300301.firebaseapp.com/';
 
 const Login = () => {
   const { register, handleSubmit } = useForm<LoginFormInput>();
@@ -25,14 +24,17 @@ const Login = () => {
   const toastIdRef: any = React.useRef();
 
   const onSubmit = async (data: LoginFormInput) => {
-    try {
-      await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL || backendURL}/signin`
-      );
-      successToast();
-    } catch (error) {
-      failedToast();
-    }
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(data.email, data.password)
+      .then((userCredential) => {
+        successToast();
+        console.error('Sign-In Successful');
+      })
+      .catch((error) => {
+        failedToast(error);
+        console.error('Sign-In Error', error);
+      });
   };
 
   const successToast = () => {
@@ -45,10 +47,10 @@ const Login = () => {
     });
   };
 
-  const failedToast = () => {
+  const failedToast = (error: any) => {
     toastIdRef.current = toast({
       title: 'There was an error logging you in.',
-      description: 'Please double check your email and password',
+      description: error,
       status: 'warning',
       duration: 9000,
       isClosable: true,
