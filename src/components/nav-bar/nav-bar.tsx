@@ -1,7 +1,8 @@
 import React from 'react';
 // import './App.css';
-import { Flex, Spacer, Center } from '@chakra-ui/react';
+import { Flex, Spacer, Center, Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import { Image, Link } from '@chakra-ui/react';
+import { ChevronDownIcon } from '@chakra-ui/icons'
 import './nav-bar.css';
 const Navbar = () => {
   return (
@@ -26,9 +27,15 @@ const Navbar = () => {
         <Link fontWeight='semibold' color='white' p='4'>
           THE TEAM
         </Link>
-        <Link fontWeight='semibold' color='white' p='4'>
-          ACCOUNT
-        </Link>
+        <Menu>
+          <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+            Profile
+          </MenuButton>
+          <MenuList>
+            <MenuItem>Profile</MenuItem>
+            <MenuItem>Settings</MenuItem>
+          </MenuList>
+        </Menu>
       </Center>
     </Flex>
   );

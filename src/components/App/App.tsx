@@ -13,7 +13,6 @@ function App() {
 
   return (
     <div className='App'>
-      {/* <Navbar></Navbar> */}
       <BrowserRouter>
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
