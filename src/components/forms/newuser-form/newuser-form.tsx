@@ -10,8 +10,12 @@ import {
   Rooms,
   Landing,
 } from './steps/index';
+import firebase from '../../../firebase';
 
 const backendURL = 'https://testing-environment-300301.firebaseapp.com/';
+
+// // Initialize FireStore Database
+var db = firebase.firestore();
 
 const NewUserForm = (props: any) => {
   const { firstName } = props;
@@ -29,6 +33,24 @@ const NewUserForm = (props: any) => {
       landlordType,
       profilePicture
     );
+    
+    var user = firebase.auth().currentUser;
+    if (user) {
+      db.collection('Users')
+      .doc(user.uid)
+      .set({
+          propertyType: propertyType,
+          roomNumber: roomNumber,
+          bathroomNumber: bathrooNumber,
+          landlordType: landlordType
+      })
+      .then(function () {
+          console.log('Database Update Successful');
+      })
+      .catch(function (error: any) {
+          console.error('Error Rewriting to Document', error);
+      });
+    }
   };
 
   return (
