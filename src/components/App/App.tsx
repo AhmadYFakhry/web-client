@@ -5,6 +5,8 @@ import firebase from '../../firebase';
 import Login from '../forms/login-form/Login';
 import Register from '../forms/reg-form/Registration';
 import FaqPage from '../pages/faq';
+import ProfilePage from '../pages/profile';
+
 import './App.css';
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/faq' component={FaqPage} />
+        <Route path="/profile/:id" component={ProfilePage}/>
+
       </BrowserRouter>
     </div>
   );
