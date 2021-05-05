@@ -17,7 +17,7 @@ const HomePage = () => {
                 </Flex>
                 <Flex direction="column" textAlign="center" align="center" width="100%">
                     <Text marginBottom="20px" width="1000px" fontSize="11pt">
-                        Sign up for our limited prototype launch and tell us about your tenant and lifestyle preferences. In this release you will be able to create an account, detail your tenant preferences and learn more about what our first full product release will be able to do. See our [LINK] FAQ page for common tips related to the people and process of finding a lease and see our product page for a sneak peak of what’s to come in the next few months!
+                        Sign up for our limited prototype launch and tell us about your tenant and lifestyle preferences. In this release you will be able to create an account, detail your tenant preferences and learn more about what our first full product release will be able to do. See our <Link href="/faq">FAQ</Link> page for common tips related to the people and process of finding a lease and see our product page for a sneak peak of what’s to come in the next few months!
                     </Text>
                 <Button rightIcon={<ArrowForwardIcon w='10' h="5" />} height="65px" className='login-btn'>
                     <Link href="/register">Sign for more updates on new features or releases</Link>
