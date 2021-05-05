@@ -15,9 +15,6 @@ import { CUIAutoComplete } from 'chakra-ui-autocomplete'
 
 const UniStep = (props: any) => {
   const { setUniversity, next, university } = props;
-
-  const [universities, setUniversitities] = React.useState();
-
   const onPressEnter = useCallback(
     (event) => {
       // console.log(event);
