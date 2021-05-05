@@ -40,7 +40,7 @@ const LandlordType = (props: any) => {
     >
       <Heading>What property type are you looking for?</Heading>
       <Stack {...group} className='button-stack'>
-        {options.map((value) => {
+        {options.map((value, io) => {
           const radio = getRadioProps({ value });
           return (
             <RadioCard key={value} {...radio}>

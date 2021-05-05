@@ -27,6 +27,7 @@ const Register = () => {
   const toastIdRef: any = React.useRef();
 
   const onSubmit = async () => {
+    console.log("TEST");
     const newUser = {
       university,
       email,
@@ -34,45 +35,18 @@ const Register = () => {
       name: `${firstName}, ${lastName}`,
     };
     try {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(newUser.email, newUser.password)
-        .then((userCredential: any) => {
-          //Create user object
-          var user = userCredential.user;
-
-          //Inputting User Preferences and Types into the Database
-          db.collection('Users')
-            .doc(user.uid)
-            .set({
-              type: '',
-            })
-            .then(function () {
-              successToast();
-              console.log('Database Update Successful');
-            })
-            .catch(function (error: any) {
-              failedToast();
-              console.error('Error Rewriting to Document', error);
-            });
-
-          //Inputting User Information
-          user
-            .updateProfile({
-              displayName: newUser.name,
-            })
-            .then(function () {
-              console.log('User Update Successful');
-              successToast();
-            })
-            .catch(function (error: any) {
-              console.error('User Update Error', error);
-              failedToast();
-            });
-          console.log('User Registration Successful');
-        });
-
-      console.log(newUser);
+      const userCredential = await firebase.auth().createUserWithEmailAndPassword(newUser.email, newUser.password)
+      const user = userCredential.user;
+      //Inputting User Preferences and Types into the Database
+      await db.collection('Users')
+      .doc(user?.uid)
+      .set({
+        type: '',
+      })
+      await user?.updateProfile({
+          displayName: newUser.name,
+        })
+      console.log('User Update Successful');
       successToast();
     } catch (error) {
       failedToast();
@@ -133,10 +107,9 @@ const Register = () => {
         password={password}
         component={PassStep}
         setPassword={setPassword}
-        submit={onSubmit}
       />
-      <Step component={Loading} />
-      <Step firstName={firstName} component={NewUserForm}></Step>
+      <Step beforeStepChange={onSubmit} component={Loading} />
+      <Step firstName={firstName} component={NewUserForm} />
     </Steps>
   );
 };

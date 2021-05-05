@@ -12,6 +12,9 @@ import {
 } from '@chakra-ui/react';
 import { Tooltip } from '@chakra-ui/react';
 import { CloseButton } from '@chakra-ui/react';
+import { CUIAutoComplete } from 'chakra-ui-autocomplete'
+
+
 const UniStep = (props: any) => {
   const { setUniversity, next, university } = props;
 

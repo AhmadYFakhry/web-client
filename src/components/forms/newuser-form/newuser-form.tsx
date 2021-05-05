@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import './Registration.css';
-import axios from 'axios';
 import { Step, Steps } from 'react-step-builder';
-// import { EmailStep, PassStep, NameStep, UniStep } from './steps/index';
 import {
   UploadProfilePicture,
   PropertyType,
@@ -14,7 +11,6 @@ import firebase from '../../../firebase';
 
 const backendURL = 'https://testing-environment-300301.firebaseapp.com/';
 
-// // Initialize FireStore Database
 var db = firebase.firestore();
 
 const NewUserForm = (props: any) => {
@@ -67,12 +63,13 @@ const NewUserForm = (props: any) => {
         setRoomNumber={setRoomNumber}
         setBathroomNumber={setBathroomNumber}
         component={Rooms}
+        beforeStepChange={onSubmit}
       ></Step>
-      <Step
+      {/* <Step
         landlordType={landlordType}
         setLandlordType={setLandlordType}
         component={LandlordType}
-      />
+      /> */}
       <Step
         setProfilePicture={setProfilePicture}
         component={UploadProfilePicture}

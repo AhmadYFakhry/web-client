@@ -22,6 +22,10 @@ const Navbar = () => {
     }
     });
 
+    const signOut = () => {
+      firebase.auth().signOut();
+    }
+
 
   return (
     <Flex pos='fixed' w='100vw' h='84px'>
@@ -46,20 +50,23 @@ const Navbar = () => {
           THE TEAM
         </Link>
         {signedIn ? <Menu>
-          <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-            Profile
+          <MenuButton fontWeight="semibold" backgroundColor="#F6CC50" as={Button} rightIcon={<ChevronDownIcon />}>
+            PROFILE
           </MenuButton>
           <MenuList>
             <MenuItem>
-              <Link href={`/profile/${user?.uid}`}>
+              <Link href={`/profile`}>
                 View Profile
               </Link>
             </MenuItem>
-            <MenuItem>Change Email</MenuItem>
-            <MenuItem>Change Password</MenuItem>
+            <MenuItem>
+              <Link onClick={signOut}>
+                Sign out
+              </Link>
+            </MenuItem>
           </MenuList>
         </Menu> :
-        <Link fontWeight="semibold" href="/signin">
+        <Link color="white" fontWeight="semibold" href="/login">
           SIGN IN
         </Link>}
       </Center>

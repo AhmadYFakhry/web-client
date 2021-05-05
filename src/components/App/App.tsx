@@ -21,8 +21,7 @@ function App() {
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/faq' component={FaqPage} />
-        <Route path="/profile/:id" component={ProfilePage}/>
-
+        <Route path="/profile/" component={ProfilePage}/>
       </BrowserRouter>
     </div>
   );

@@ -9,9 +9,11 @@ import {
   Button,
   Text,
   useToast,
+  Link,
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import firebase from '../../../firebase';
+import Navbar from '../../nav-bar/nav-bar';
 
 interface LoginFormInput {
   email: string;
@@ -21,24 +23,19 @@ interface LoginFormInput {
 const Login = () => {
   const { register, handleSubmit } = useForm<LoginFormInput>();
   const toast = useToast();
-  const toastIdRef: any = React.useRef();
 
   const onSubmit = async (data: LoginFormInput) => {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(data.email, data.password)
-      .then((userCredential) => {
-        successToast();
-        console.error('Sign-In Successful');
-      })
-      .catch((error) => {
-        failedToast(error);
-        console.error('Sign-In Error', error);
-      });
+
+    try {
+      await firebase.auth().signInWithEmailAndPassword(data.email, data.password)
+      successToast()
+    } catch (error) {
+      failedToast(error);
+    }
   };
 
   const successToast = () => {
-    toastIdRef.current = toast({
+   toast({
       title: 'Logged In.',
       description: "You'll be redirected momentarily",
       status: 'success',
@@ -48,7 +45,7 @@ const Login = () => {
   };
 
   const failedToast = (error: any) => {
-    toastIdRef.current = toast({
+    toast({
       title: 'There was an error logging you in.',
       description: error,
       status: 'warning',
@@ -58,6 +55,8 @@ const Login = () => {
   };
 
   return (
+    <>
+    <Navbar />
     <div className='test'>
       <Container
         fontSize={['sm', 'md', 'lg', 'xl']}
@@ -89,12 +88,16 @@ const Login = () => {
               <Button type='submit' className='login-btn' mr='3'>
                 Submit
               </Button>
-              <Button className='login-btn'>Register</Button>
+              <Button className='login-btn'>
+                <Link href="/register">Register</Link>
+              </Button>
             </Box>
           </Stack>
         </form>
       </Container>
     </div>
+
+    </>
   );
 };
 
