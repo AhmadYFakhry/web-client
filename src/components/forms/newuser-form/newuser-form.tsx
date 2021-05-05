@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Step, Steps } from 'react-step-builder';
 import {
   UploadProfilePicture,
   PropertyType,
-  LandlordType,
   Rooms,
   Landing,
 } from './steps/index';
 import firebase from '../../../firebase';
 
-const backendURL = 'https://testing-environment-300301.firebaseapp.com/';
+// const backendURL = 'https://testing-environment-300301.firebaseapp.com/';
 
 var db = firebase.firestore();
 
@@ -18,7 +17,7 @@ const NewUserForm = (props: any) => {
   const [propertyType, setPropertyType] = useState<string>('');
   const [roomNumber, setRoomNumber] = useState<Number>(2);
   const [bathrooNumber, setBathroomNumber] = useState<Number>(2);
-  const [landlordType, setLandlordType] = useState<string>('');
+  const [landlordType] = useState<string>('Property Management Company');
   const [profilePicture, setProfilePicture] = useState(null);
 
   const onSubmit = () => {

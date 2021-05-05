@@ -1,6 +1,6 @@
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { Box, Container, Flex, Text } from '@chakra-ui/layout'
-import { Button, Heading, Image, Link } from '@chakra-ui/react';
+import { Button, Heading, Link } from '@chakra-ui/react';
 import React from 'react'
 import Navbar from '../nav-bar/nav-bar';
 import './css/home.css'

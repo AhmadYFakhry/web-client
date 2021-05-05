@@ -2,11 +2,9 @@ import React, { useCallback } from 'react';
 import {
   Heading,
   Container,
-  Box,
   Stack,
   Input,
   Button,
-  Text,
   // useToast,
   Flex,
 } from '@chakra-ui/react';
