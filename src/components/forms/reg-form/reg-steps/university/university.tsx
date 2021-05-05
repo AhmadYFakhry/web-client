@@ -18,6 +18,8 @@ import { CUIAutoComplete } from 'chakra-ui-autocomplete'
 const UniStep = (props: any) => {
   const { setUniversity, next, university } = props;
 
+  const [universities, setUniversitities] = React.useState();
+
   const onPressEnter = useCallback(
     (event) => {
       // console.log(event);
@@ -33,10 +35,14 @@ const UniStep = (props: any) => {
     [setUniversity]
   );
 
+  const backToLogin = () => {
+    window.location.assign("/login")
+  }
+
   return (
     <div>
       <Tooltip label='Cancel Registration and go home'>
-        <CloseButton />
+        <CloseButton onClick={backToLogin} />
       </Tooltip>
       <Container
         fontSize={['sm', 'md', 'lg', 'xl']}

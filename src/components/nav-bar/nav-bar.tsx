@@ -37,16 +37,16 @@ const Navbar = () => {
       </Center>
       <Spacer bg='#3F3F3F' />
       <Center bg='#3F3F3F' p='2'>
-        <Link fontWeight='semibold' color='white' p='4'>
+        <Link href="/" fontWeight='semibold' color='white' p='4'>
           HOME
         </Link>
-        <Link fontWeight='semibold' color='white' p='4'>
-          FOR STUDENTS
+        <Link href="/product" fontWeight='semibold' color='white' p='4'>
+          WHAT WE DO
         </Link>
-        <Link fontWeight='semibold' color='white' p='4'>
-          FOR LANDLORDS
+        <Link href="/faq" fontWeight='semibold' color='white' p='4'>
+          FAQ
         </Link>
-        <Link fontWeight='semibold' color='white' p='4'>
+        <Link href="/team" fontWeight='semibold' color='white' p='4'>
           THE TEAM
         </Link>
         {signedIn ? <Menu>

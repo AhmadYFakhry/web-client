@@ -42,6 +42,7 @@ const NewUserForm = (props: any) => {
       })
       .then(function () {
           console.log('Database Update Successful');
+          window.location.assign("/login")
       })
       .catch(function (error: any) {
           console.error('Error Rewriting to Document', error);
@@ -63,7 +64,7 @@ const NewUserForm = (props: any) => {
         setRoomNumber={setRoomNumber}
         setBathroomNumber={setBathroomNumber}
         component={Rooms}
-        beforeStepChange={onSubmit}
+        // beforeStepChange={onSubmit}
       ></Step>
       {/* <Step
         landlordType={landlordType}

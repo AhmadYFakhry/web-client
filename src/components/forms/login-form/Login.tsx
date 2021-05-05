@@ -20,18 +20,27 @@ interface LoginFormInput {
   password: string;
 }
 
-const Login = () => {
+const Login = (props: any) => {
   const { register, handleSubmit } = useForm<LoginFormInput>();
+  const [loading, setLoading] = React.useState<boolean>(false);
   const toast = useToast();
 
   const onSubmit = async (data: LoginFormInput) => {
-
+    setLoading(true);
     try {
       await firebase.auth().signInWithEmailAndPassword(data.email, data.password)
-      successToast()
+      successToast();
+      props.history.push('/profile')
     } catch (error) {
-      failedToast(error);
+      toast({
+        title: 'There was an error logging you in.',
+        description: error.message,
+        status: 'warning',
+        duration: 9000,
+        isClosable: true,
+      });
     }
+    setLoading(false);
   };
 
   const successToast = () => {
@@ -39,16 +48,6 @@ const Login = () => {
       title: 'Logged In.',
       description: "You'll be redirected momentarily",
       status: 'success',
-      duration: 9000,
-      isClosable: true,
-    });
-  };
-
-  const failedToast = (error: any) => {
-    toast({
-      title: 'There was an error logging you in.',
-      description: error,
-      status: 'warning',
       duration: 9000,
       isClosable: true,
     });
@@ -85,7 +84,7 @@ const Login = () => {
               placeholder='Password'
             />
             <Box py='3'>
-              <Button type='submit' className='login-btn' mr='3'>
+              <Button isLoading={loading} type='submit' className='login-btn' mr='3'>
                 Submit
               </Button>
               <Button className='login-btn'>
