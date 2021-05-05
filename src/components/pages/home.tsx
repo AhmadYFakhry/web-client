@@ -11,7 +11,7 @@ const HomePage = () => {
         bgColor="gray.50" boxShadow="xl">
             <Navbar />
             <Container bgColor="gray.50" boxShadow="xl" height="100%" maxWidth="1600px" width="100%" paddingTop="200px">
-                <Flex direction="column" textAlign="center" marginTop="20%" justify="space-around">
+                <Flex direction="column" textAlign="center" marginTop="10%" justify="space-around">
                     <Heading fontSize={[ "27pt", "65pt"]} paddingBottom="30px">Find Your Next Home</Heading>
                     <Heading fontSize={[ "14pt", "20pt"]} paddingBottom="30px">Introducing Tenant+ by The Lease Genius</Heading>
                 </Flex>
