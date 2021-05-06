@@ -32,10 +32,11 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=8080 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "gcp-build": "tsc -p ."
   },
   "eslintConfig": {
     "extends": [
@@ -58,5 +59,8 @@
   "devDependencies": {
     "@types/react-router-dom": "^5.1.7",
     "dotenv": "^8.2.0"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }
